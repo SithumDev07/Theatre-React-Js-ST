@@ -1,16 +1,27 @@
 import React from 'react'
-import { SearchIcon, GiftIcon, BellIcon, UserIcon } from '@heroicons/react/outline'
+import { SearchIcon, GiftIcon, BellIcon, UserIcon } from '@heroicons/react/outline';
+import { Link } from 'react-router-dom'
 
 function NavBar() {
     return (
         <div className='w-full fixed top-0 right-0 left-0 bg-black py-4 z-50'>
             <div className='container mx-auto h-full flex items-center justify-between'>
                 <ul className='flex items-center text-gray-200'>
-                    <li className='active font-bold'>Home</li>
-                    <li className='ml-5'>TV Shows</li>
-                    <li className='ml-5'>Movies</li>
-                    <li className='ml-5'>Latest</li>
-                    <li className='ml-5'>My List</li>
+                    <li className='active font-bold'>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className='ml-5'>
+                        <Link to="/tvshows">TV Shows</Link>
+                    </li>
+                    <li className='ml-5'>
+                        <Link to="/movies">Movies</Link>
+                    </li>
+                    <li className='ml-5'>
+                        <Link to="/latest">Latest</Link>
+                    </li>
+                    <li className='ml-5'>
+                        <Link to="/mylist">My List</Link>
+                    </li>
                 </ul>
                 <div className='flex items-center'>
                     <button>
