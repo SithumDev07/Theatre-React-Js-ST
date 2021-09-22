@@ -5,6 +5,7 @@ import Latest from './pages/Latest';
 import Movies from './pages/Movies';
 import MyList from './pages/MyList';
 import TvShows from './pages/TvShows';
+import ShowMovie from './components/ShowMovie';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/mylist">
             <MyList />
           </Route>
+          <Route path="/movie/:id" component={ShowMovie} />
         </Switch>
       </div>
     </Router>

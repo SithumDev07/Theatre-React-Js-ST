@@ -11,7 +11,7 @@ function MovieItem({ title, imageURI, duration, releasedDate, rating, genre }) {
             <div className='h-80 w-64'>
                 <img src={imageURI} className='object-cover object-bottom w-full h-full hover:opacity-75 transition ease-in-out duration-150' alt={title} />
             </div>
-            <h2 className='text-gray-50 font-extrabold mt-2 text-xl'>{title}</h2>
+            <h2 className='text-gray-50 font-extrabold mt-2 text-xl'>{title.length < 26 ? title : title.slice(0, 21) + "..."}</h2>
             <p className='text-gray-50 my-3 text-sm'>{duration} | {genre.map((item) => `${item}, `)}</p>
             <p className='text-gray-50 text-sm'>Released {releasedDate}</p>
             <button className='border-opacity-70 border-2 border-red-600 px-7 py-2 uppercase text-gray-50 tracking-wide font-semibold mt-3 hover:bg-red-500 transform transition duration-300'>Get Tickets</button>
