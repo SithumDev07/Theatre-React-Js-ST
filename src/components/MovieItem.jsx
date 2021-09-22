@@ -9,7 +9,7 @@ function MovieItem({ title, imageURI, duration, releasedDate, rating, genre }) {
                 <StarIcon className='ml-1 w-4 h-4 text-yellow-500' />
             </div>
             <div className='h-80 w-64'>
-                <img src={imageURI} className='object-cover object-bottom w-full h-full hover:opacity-75 transition ease-in-out duration-150' alt="Image" />
+                <img src={imageURI} className='object-cover object-bottom w-full h-full hover:opacity-75 transition ease-in-out duration-150' alt={title} />
             </div>
             <h2 className='text-gray-50 font-extrabold mt-2 text-xl'>{title}</h2>
             <p className='text-gray-50 my-3 text-sm'>{duration} | {genre.map((item) => `${item}, `)}</p>

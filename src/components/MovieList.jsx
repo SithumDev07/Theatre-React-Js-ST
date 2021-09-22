@@ -64,7 +64,6 @@ const data = [
     },
 ]
 
-const data1 = []
 
 function MovieList() {
     return (

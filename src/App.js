@@ -1,15 +1,35 @@
-import Header from "./components/Header";
-import MovieList from "./components/MovieList";
-import NavBar from "./components/NavBar";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Home from "./pages/Home";
+import Latest from './pages/Latest';
+import Movies from './pages/Movies';
+import MyList from './pages/MyList';
+import TvShows from './pages/TvShows';
 
 function App() {
   return (
-    // style={{ background: "url('https://images.unsplash.com/photo-1585647347384-2593bc35786b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80')" }}
-    <div className="App w-screen h-full bg-fixed bg-no-repeat bg-gradient-to-t from-black via bg-gray-900" >
-     <NavBar />
-     <Header />
-     <MovieList />
-    </div>
+    <Router>
+      <div className="App w-screen h-full bg-fixed bg-no-repeat bg-gradient-to-t from-black via bg-gray-900">
+      <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/tvshows">
+            <TvShows />
+          </Route>
+          <Route path="/movies">
+            <Movies />
+          </Route>
+          <Route path="/latest">
+            <Latest />
+          </Route>
+          <Route path="/mylist">
+            <MyList />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
