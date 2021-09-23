@@ -26,3 +26,13 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Marsden-Heavy";
+  src: url("./fonts/Marsden-Cm-Heavy.ttf");
+}
+
+@font-face {
+  font-family: "Marsden-Light";
+  src: url("./fonts/Marsden-Cm-Light.ttf");
+}

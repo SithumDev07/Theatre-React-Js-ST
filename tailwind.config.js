@@ -2,6 +2,10 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      headerFont: ['Marsden-Heavy'],
+      FontThin: ['Marsden-Thin'],
+    },
     extend: {
       dropShadow: {
         '3xl': '0 35px 35px rgba(240, 42, 43, 1)',

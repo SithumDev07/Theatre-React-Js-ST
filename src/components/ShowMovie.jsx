@@ -30,7 +30,7 @@ function ShowMovie({ match }) {
         <div className='w-full h-screen flex justify-center items-center bg-cover bg-no-repeat bg-opacity-50' style={{ background: `url('${movie.backgroundImageURI}')` }}>
             <div className='container mx-auto flex'>
                 <div className='flex-1 mt-8'>
-                    <h1 className='text-gray-50 uppercase tracking-wide text-8xl font-extrabold'>{movie.title}</h1>
+                    <h1 className='text-gray-50 uppercase tracking-wide text-8xl font-extrabold font-headerFont'>{movie.title}</h1>
                     <p className='text-gray-300 text-xl font-bold uppercase tracking-wide mb-8 mt-2'>{movie.released} <span className='text-red-500'>|</span> {movie.genres.map((item) => `${item}, `)}</p>
                     <div className='flex items-center text-gray-50 text-xl'>
                         <h2 className='uppercase tracking-wider mr-5 font-semibold'>The Story</h2>

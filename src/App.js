@@ -7,6 +7,7 @@ import MyList from './pages/MyList';
 import TvShows from './pages/TvShows';
 import ShowMovie from './components/ShowMovie';
 import CreateMovie from './pages/CreateMovie';
+import DeleteMovie from './pages/DeleteMovie';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/movie/:id" component={ShowMovie} />
           <Route path="/create" component={CreateMovie} />
           <Route path="/edit/:id" component={CreateMovie} />
-          <Route path="/delete/:id" component={CreateMovie} />
+          <Route path="/delete/:id" component={DeleteMovie} />
         </Switch>
       </div>
     </Router>
