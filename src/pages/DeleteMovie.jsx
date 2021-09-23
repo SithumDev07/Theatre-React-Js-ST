@@ -12,6 +12,7 @@ function DeleteMovie({ match }) {
     const [loading, setLoading] = useState(true);
     const [isPopupShown, setIsPopupShown] = useState(false);
     const [redirect, setRedirect] = useState(false);
+    const [customError, setCustomError] = useState();
 
     const deleteHandler = () => {
         setIsPopupShown(true);
@@ -26,9 +27,16 @@ function DeleteMovie({ match }) {
             .then(response => {
                 console.log(response);
                 setRedirect(true);
+                return response;
             })
             .catch(function (error) {
-                console.log(error);
+                if (error.response) {
+                    setCustomError('Item Not Found');
+                } else if (error.request) {
+                    setCustomError('Internal Server Error');
+                } else {
+                    setCustomError("Can't delete item");
+                }
             })
     }
 
@@ -41,7 +49,15 @@ function DeleteMovie({ match }) {
                     return response;
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    if (error.response) {
+                        // * Request made and server responded
+                        setCustomError('Item Not Found');
+                    } else if (error.request) {
+                        // * request made but server not responded
+                        setCustomError('Internal Server Error');
+                    } else {
+                        setCustomError('Just an Error');
+                    }
                 });
         }
         fetchMovie(match.params.id)
@@ -50,6 +66,14 @@ function DeleteMovie({ match }) {
     if (redirect) {
         return (
             <Redirect to="/" />
+        )
+    }
+
+    if (customError !== undefined) {
+        return (
+            <div className='w-screen h-screen flex items-center justify-center text-7xl tracking-widest font-light uppercase text-gray-400'>
+                {customError}
+            </div>
         )
     }
 

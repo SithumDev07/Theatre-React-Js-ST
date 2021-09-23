@@ -8,13 +8,24 @@ function MovieList() {
 
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [customError, setCustomError] = useState();
 
     useEffect(() => {
         async function fetchMovies() {
             await axios.get("/movies").then(response => {
                 setMovies(response.data);
-                setLoading(false);
+                if (response.data.length !== 0) {
+                    setLoading(false);
+                }
                 return response;
+            }).catch(function (error) {
+                if (error.response) {
+                    setCustomError('Item Not Found');
+                } else if (error.request) {
+                    setCustomError('Internal Server Error');
+                } else {
+                    setCustomError("Can't delete item");
+                }
             });
         }
         fetchMovies();
@@ -33,7 +44,7 @@ function MovieList() {
                     </div>
 
                 ) : (<div className='w-full h-full flex items-center justify-center'>
-                    <h1 className='text-5xl text-gray-50 uppercase tracking-wider font-semibold'>No Results Found</h1>
+                    <h1 className='text-5xl text-gray-50 uppercase tracking-wider font-light my-24'>No Results Found</h1>
                 </div>)
             }
         </>

@@ -8,6 +8,7 @@ import TvShows from './pages/TvShows';
 import ShowMovie from './components/ShowMovie';
 import CreateMovie from './pages/CreateMovie';
 import DeleteMovie from './pages/DeleteMovie';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/create" component={CreateMovie} />
           <Route path="/edit/:id" component={CreateMovie} />
           <Route path="/delete/:id" component={DeleteMovie} />
+          <Route path="/error" component={ErrorPage} />
         </Switch>
       </div>
     </Router>
