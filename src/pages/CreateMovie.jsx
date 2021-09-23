@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid'
 import MovieItem from '../components/MovieItem';
+import axios from '../axios/axios';
+import { Redirect } from 'react-router-dom';
 
 function CreateMovie() {
 
@@ -12,6 +14,26 @@ function CreateMovie() {
     const [released, setReleased] = useState("Jan 01, 2000");
     const [rating, setRating] = useState(0.0);
     const [genre, setGenre] = useState(["Genre"]);
+
+    async function PostHandler() {
+        await axios.post("/movies", {
+            title: title,
+            description: description,
+            photoURI: image,
+            duration: duration,
+            released: released,
+            rating: parseFloat(rating),
+            genres: genre,
+            backgroundImageURI: background
+        }).then(response => {
+            console.log(response);
+            return (
+                <Redirect to="/movies" />
+            )
+        }).catch(function (error) {
+            console.log(error);
+        })
+    }
 
     return (
         <div className='w-screen h-screen flex items-center justify-center'>
@@ -30,7 +52,7 @@ function CreateMovie() {
                     <input type="text" placeholder="Genre" className='bg-transparent border-b border-gray-200 px-3 py-3 placeholder-gray-50 mb-3' onChange={(e) => setGenre(e.target.value.split(','))} />
                     <input type="text" placeholder="Rating" className='bg-transparent border-b border-gray-200 px-3 py-3 placeholder-gray-50 mb-3' onChange={(e) => setRating(e.target.value)} />
                     <input type="text" placeholder="Background Image" className='bg-transparent border-b border-gray-200 px-3 py-3 placeholder-gray-50 mb-3' onChange={(e) => setBackground(e.target.value)} />
-                    <button className='flex items-center self-end mt-6 text-2xl'>
+                    <button className='flex items-center self-end mt-6 text-2xl' onClick={PostHandler}>
                         Create
                         <ArrowNarrowRightIcon className='w-6 h-6 text-gray-100 ml-3' />
                     </button>
@@ -40,4 +62,4 @@ function CreateMovie() {
     )
 }
 
-export default CreateMovie
+export default CreateMovie;
