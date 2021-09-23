@@ -8,7 +8,7 @@ function MovieList() {
         <>
             {
                 data.length > 0 ? (
-                    <div className='container mx-auto grid grid-cols-5 gap-8'>
+                    <div className='container mx-auto grid xl:grid-cols-4 2xl:grid-cols-5 xl:gap-6 2xl:gap-8'>
                         {data.filter((_, index) => index < 20).map((item, _) => (
                             <Link to={`/movie/${item.id}`} key={item.id}>
                                 <MovieItem title={item.title} imageURI={item.photoURI} duration={item.duration} releasedDate={item.released} rating={item.rating} genre={item.genre} />

@@ -8,7 +8,7 @@ function ShowMovie({ match }) {
     return (
         <div className='w-full h-screen flex justify-center items-center bg-cover bg-no-repeat bg-opacity-50' style={{ background: `url('${dataExtracted.background}')` }}>
             <div className='container mx-auto flex'>
-                <div className='flex-1'>
+                <div className='flex-1 mt-8'>
                     <h1 className='text-gray-50 uppercase tracking-wide text-8xl font-extrabold'>{dataExtracted.title}</h1>
                     <p className='text-gray-300 text-xl font-bold uppercase tracking-wide mb-8 mt-2'>{dataExtracted.released} <span className='text-red-500'>|</span> {dataExtracted.genre.map((item) => `${item}, `)}</p>
                     <div className='flex items-center text-gray-50 text-xl'>
@@ -17,16 +17,16 @@ function ShowMovie({ match }) {
                     </div>
                     <div className='flex items-center text-gray-50 text-xl font-semibold mt-6'>
                         <h2 className='mr-5 uppercase tracking-wider'>Trailers</h2>
-                        <div className='flex-1 h-56 grid grid-cols-4 gap-8'>
+                        <div className='flex-1 h-56 grid grid-cols-4 gap-6 2xl:gap-8'>
                             <img src="https://upload.wikimedia.org/wikipedia/en/f/f7/Spider-Man_No_Way_Home_logo.jpg" alt={dataExtracted.photoURI} className='mr-3 w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
                             <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5d14be704c687b00085af34e%2F-Spider-Man--Far-From-Home-%2F960x0.jpg%3Ffit%3Dscale" alt={dataExtracted.photoURI} className='mr-3 w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
                             <img src="https://twistedvoxel.com/wp-content/uploads/2019/01/spider-man-far-from-home-trailer-official.jpg" alt={dataExtracted.photoURI} className='w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
                         </div>
                     </div>
                 </div>
-                <div className='flex items-end text-gray-50 text-2xl uppercase tracking-wider font-semibold'>
+                <div className='flex items-end text-gray-50 text-2xl uppercase tracking-wider font-semibold mb-6'>
                     <div className='flex items-center' style={{ userSelect: 'none' }}>
-                        <button className='bg-red-500 shadow-9xl rounded-full w-24 h-24 flex items-center justify-center mr-8'>
+                        <button className='bg-red-600 shadow-9xl rounded-full w-24 h-24 flex items-center justify-center mr-8 transform transition duration-300 hover:scale-110 active:scale-75'>
                             <svg
                                 className='w-10 h-10 text-gray-100'
                                 viewBox="0 0 24 24"

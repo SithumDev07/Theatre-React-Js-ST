@@ -1,5 +1,6 @@
 import React from 'react'
 import { StarIcon } from '@heroicons/react/solid'
+import { useState } from 'react'
 
 function MovieItem({ title, imageURI, duration, releasedDate, rating, genre }) {
     return (
@@ -8,7 +9,8 @@ function MovieItem({ title, imageURI, duration, releasedDate, rating, genre }) {
                 {rating}
                 <StarIcon className='ml-1 w-4 h-4 text-yellow-500' />
             </div>
-            <div className='h-80 w-64'>
+            <div className='h-80 xl:w-52 2xl:w-64'>
+                {/* onError={() => setImage('https://www.tibs.org.tw/images/default.jpg')} */}
                 <img src={imageURI} className='object-cover object-bottom w-full h-full hover:opacity-75 transition ease-in-out duration-150' alt={title} />
             </div>
             <h2 className='text-gray-50 font-extrabold mt-2 text-xl'>{title.length < 26 ? title : title.slice(0, 21) + "..."}</h2>

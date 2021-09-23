@@ -6,6 +6,7 @@ import Movies from './pages/Movies';
 import MyList from './pages/MyList';
 import TvShows from './pages/TvShows';
 import ShowMovie from './components/ShowMovie';
+import CreateMovie from './pages/CreateMovie';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <MyList />
           </Route>
           <Route path="/movie/:id" component={ShowMovie} />
+          <Route path="/create" component={CreateMovie} />
         </Switch>
       </div>
     </Router>
