@@ -16,15 +16,17 @@ function MovieList() {
                 setMovies(response.data);
                 if (response.data.length !== 0) {
                     setLoading(false);
+                } else {
+                    setCustomError('Movies Not Found');
                 }
                 return response;
             }).catch(function (error) {
                 if (error.response) {
-                    setCustomError('Item Not Found');
+                    setCustomError('Movies Not Found');
                 } else if (error.request) {
                     setCustomError('Internal Server Error');
                 } else {
-                    setCustomError("Can't delete item");
+                    setCustomError("Can't Load Movies");
                 }
             });
         }
@@ -44,7 +46,7 @@ function MovieList() {
                     </div>
 
                 ) : (<div className='w-full h-full flex items-center justify-center'>
-                    <h1 className='text-5xl text-gray-50 uppercase tracking-wider font-light my-24'>No Results Found</h1>
+                    <h1 className='text-5xl text-gray-50 uppercase tracking-wider font-light my-24'>{customError}</h1>
                 </div>)
             }
         </>
