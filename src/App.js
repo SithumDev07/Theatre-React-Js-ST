@@ -31,6 +31,8 @@ function App() {
           </Route>
           <Route path="/movie/:id" component={ShowMovie} />
           <Route path="/create" component={CreateMovie} />
+          <Route path="/edit/:id" component={CreateMovie} />
+          <Route path="/delete/:id" component={CreateMovie} />
         </Switch>
       </div>
     </Router>
