@@ -4,10 +4,10 @@ import MovieList from '../components/MovieList'
 
 function Home() {
     return (
-        <>
+        <div className='w-full h-full test'>
             <Header />
             <MovieList />
-        </>
+        </div>
     )
 }
 

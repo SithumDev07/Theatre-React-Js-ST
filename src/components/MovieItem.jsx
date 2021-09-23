@@ -1,6 +1,5 @@
 import React from 'react'
 import { StarIcon } from '@heroicons/react/solid'
-import { useState } from 'react'
 
 function MovieItem({ title, imageURI, duration, releasedDate, rating, genre }) {
     return (

@@ -1,26 +1,47 @@
-import React from 'react'
-import data from '../data';
-import { PlayIcon } from '@heroicons/react/outline'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
+import axios from '../axios/axios';
 
 function ShowMovie({ match }) {
-    const dataExtracted = data.find((item) => item.id == match.params.id);
-    console.log(dataExtracted.background);
+
+    const [movie, setMovie] = useState()
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchMovie(id) {
+            await axios.get(`/movies/${id}`).then(response => {
+                setMovie(response.data);
+                setLoading(false);
+                return response;
+            });
+        }
+        fetchMovie(match.params.id)
+    }, [match.params.id])
+
+    if (loading) {
+        return (
+            <div className='w-screen h-screen flex items-center justify-center text-7xl tracking-widest font-extrabold uppercase text-gray-400'>
+                Loading...
+            </div>
+        )
+    }
+
     return (
-        <div className='w-full h-screen flex justify-center items-center bg-cover bg-no-repeat bg-opacity-50' style={{ background: `url('${dataExtracted.background}')` }}>
+        <div className='w-full h-screen flex justify-center items-center bg-cover bg-no-repeat bg-opacity-50' style={{ background: `url('${movie.backgroundImageURI}')` }}>
             <div className='container mx-auto flex'>
                 <div className='flex-1 mt-8'>
-                    <h1 className='text-gray-50 uppercase tracking-wide text-8xl font-extrabold'>{dataExtracted.title}</h1>
-                    <p className='text-gray-300 text-xl font-bold uppercase tracking-wide mb-8 mt-2'>{dataExtracted.released} <span className='text-red-500'>|</span> {dataExtracted.genre.map((item) => `${item}, `)}</p>
+                    <h1 className='text-gray-50 uppercase tracking-wide text-8xl font-extrabold'>{movie.title}</h1>
+                    <p className='text-gray-300 text-xl font-bold uppercase tracking-wide mb-8 mt-2'>{movie.released} <span className='text-red-500'>|</span> {movie.genres.map((item) => `${item}, `)}</p>
                     <div className='flex items-center text-gray-50 text-xl'>
                         <h2 className='uppercase tracking-wider mr-5 font-semibold'>The Story</h2>
-                        <p className='flex-1'>{dataExtracted.description}</p>
+                        <p className='flex-1'>{movie.description}</p>
                     </div>
                     <div className='flex items-center text-gray-50 text-xl font-semibold mt-6'>
                         <h2 className='mr-5 uppercase tracking-wider'>Trailers</h2>
                         <div className='flex-1 h-56 grid grid-cols-4 gap-6 2xl:gap-8'>
-                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f7/Spider-Man_No_Way_Home_logo.jpg" alt={dataExtracted.photoURI} className='mr-3 w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
-                            <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5d14be704c687b00085af34e%2F-Spider-Man--Far-From-Home-%2F960x0.jpg%3Ffit%3Dscale" alt={dataExtracted.photoURI} className='mr-3 w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
-                            <img src="https://twistedvoxel.com/wp-content/uploads/2019/01/spider-man-far-from-home-trailer-official.jpg" alt={dataExtracted.photoURI} className='w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
+                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f7/Spider-Man_No_Way_Home_logo.jpg" alt={movie.photoURI} className='mr-3 w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
+                            <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5d14be704c687b00085af34e%2F-Spider-Man--Far-From-Home-%2F960x0.jpg%3Ffit%3Dscale" alt={movie.photoURI} className='mr-3 w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
+                            <img src="https://twistedvoxel.com/wp-content/uploads/2019/01/spider-man-far-from-home-trailer-official.jpg" alt={movie.photoURI} className='w-full h-full object-contain hover:opacity-75 transition ease-in-out duration-150' />
                         </div>
                     </div>
                 </div>

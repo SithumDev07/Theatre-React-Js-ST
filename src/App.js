@@ -10,7 +10,7 @@ import CreateMovie from './pages/CreateMovie';
 
 function App() {
   return (
-    <Router>
+    <Router className='h-full'>
       <div className="App w-screen h-full bg-fixed bg-no-repeat bg-gradient-to-t from-black via bg-gray-900">
       <NavBar />
         <Switch>
