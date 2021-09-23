@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid'
 import MovieItem from '../components/MovieItem';
 import axios from '../axios/axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 function CreateMovie() {
 
@@ -14,6 +14,7 @@ function CreateMovie() {
     const [released, setReleased] = useState("Jan 01, 2000");
     const [rating, setRating] = useState(0.0);
     const [genre, setGenre] = useState(["Genre"]);
+    const [redirect, setRedirect] = useState(false);
 
     async function PostHandler() {
         await axios.post("/movies", {
@@ -27,12 +28,16 @@ function CreateMovie() {
             backgroundImageURI: background
         }).then(response => {
             console.log(response);
-            return (
-                <Redirect to="/movies" />
-            )
+            setRedirect(true);
         }).catch(function (error) {
             console.log(error);
         })
+    }
+
+    if (redirect) {
+        return (
+            <Redirect to="/" />
+        )
     }
 
     return (
